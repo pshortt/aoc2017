@@ -4,7 +4,9 @@ import solution01
 class TestSolveCaptcha(unittest.TestCase):
     @classmethod
     def setUpClass(self):
-        self.puzzle = open('puzzle_input.txt', 'r').read();
+        f = open('puzzle_input.txt', 'r')
+        self.puzzle = f.read()
+        f.close()
 
     def test_example_01(self):
         self.assertEquals(solution01.solve_captcha(1122), 3)
@@ -17,9 +19,10 @@ class TestSolveCaptcha(unittest.TestCase):
         
     def test_example_04(self):
         self.assertEquals(solution01.solve_captcha(91212129), 9)
-    
+
     def test_puzzle_input(self):
-        self.assertEquals(solution01.solve_captcha(self.puzzle), 99)
-        
+        self.assertEquals(solution01.solve_captcha(self.puzzle), 1141)
+ 
+    
 if __name__ == '__main__':
     unittest.main()
