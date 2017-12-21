@@ -10,6 +10,8 @@ class Solution07Test(unittest.TestCase):
     def testExample(self):
         self.assertEqual(self.example.root.name, 'tknk')
 
+    def testTotalWeight(self):
+        self.assertEqual(self.example.get_program('padx').total_weight(), 243)
     def testPuzzle(self):
         self.assertEqual(self.puzzle.root.name, 'qibuqqg')
 
