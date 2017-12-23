@@ -18,8 +18,17 @@ class Instruction():
     
     def eval_cond(self, memval):
         fx = self.parse_bool_cond()
-        return fx()
-        
+        return fx(memval, self.condarg)
+    
+    def get_op(self):
+        if self.op == 'inc':
+            return lambda x, y: x + y
+        elif self.op == 'dec':
+            return lambda x, y: x - y
+        else:
+            print('Erroneous memeory operation')
+            return None
+    
     def parse_bool_cond(self):
         if self.condop == '==':
             return lambda x, y: x == y
@@ -49,7 +58,21 @@ class InstructionSet():
         for ins in self.instructions:
             if not isinstance(self.memory.keys, collections.Iterable) or ins.reg not in iter(self.memory):
                 self.memory[ins.reg] = 0
-                
+        self.execute()
+    
+    def execute(self):
+        self.record = []
+        for ins in self.instructions:
+            if ins.eval_cond(self.memory[ins.condreg]):
+                newval = ins.get_op()(self.memory[ins.reg], ins.arg)
+                self.record.append(newval)
+                self.memory[ins.reg] = newval
+    
+    def largest_value(self):
+        return max(self.memory.values())
+    
+    def largest_hist_value(self):
+        return max(self.record)
 if __name__ == '__main__':
     insset = InstructionSet('example_input.txt')
     print(insset.memory)
