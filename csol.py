@@ -8,7 +8,7 @@ main_file.close()
 test_file = open('solution' + dirname + '_test.py', 'w+')
 
 test_file.write('import unittest\n')
-test_file.write('import solution' + dirname + '\n')
+test_file.write('from solution' + dirname + 'import\n')
 test_file.write('\n')
 test_file.write('class Solution'+ dirname + 'Test(unittest.TestCase):\n')
 test_file.write('    def testExample(self):\n')
