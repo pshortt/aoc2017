@@ -1,5 +1,5 @@
 class KnotHash():
-    def __init__(self, input, is_part2, r=256):
+    def __init__(self, input, is_part2=True, r=256):
         # TODO: implement
         if isinstance(input, str):
             self.lengths = [ord(c) for c in input]
