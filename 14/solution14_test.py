@@ -1,5 +1,5 @@
 import unittest
-from solution14 import generate_disk, count_blocks
+from solution14 import generate_disk, count_blocks, neighbours
 
 class Solution14Test(unittest.TestCase):
     def testExample(self):
@@ -9,18 +9,9 @@ class Solution14Test(unittest.TestCase):
         self.assertEqual(count_blocks('hfdlxzhv'), 8230)
 
 if __name__ == '__main__':
-    # unittest.main()
-    # disk = generate_disk('flqrgnkx')
-    # sum = 0
-    # for row in disk:
-        # print(row.replace('0', '.').replace('1', '#'))
-    s = '11010100'
-    ctr = 1
-    r = ''
-    for c in s:
-        if c == '0':
-            ctr += 1
-            r += '.'
-        else:
-            r += str(ctr)
-    print(r)
+    unittest.main()
+    # print(neighbours((0,0), 128))
+    # print(neighbours((127,0), 128))
+    # print(neighbours((0,1), 128))
+    # print(neighbours((69,127), 128))
+    # print(neighbours((69,12), 128))
