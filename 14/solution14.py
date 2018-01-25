@@ -27,9 +27,33 @@ def neighbours(pos, length=128):
     neighs = map(f, neighs)
     neighs = [n for n in neighs] 
     
-    c = lambda t: all([x in range(0,length) for x in t])  
+    c = lambda t: all([x in range(0,length) for x in t])
     neighs = filter(c, neighs)
     return [n for n in neighs]
+
+def next_node(disk, grouped_nodes):
+    for i in range(len(disk)):
+        for j in range(len(disk)):
+            if (i, j) not in grouped_nodes and disk[i][j] != '0':
+                return (i, j)
+    return None
     
-                
- def next_node():               
+def count_groups(inp):
+    disk = generate_disk(inp)
+    ngroups = 0
+    grouped_nodes = []
+    neighs = []
+    node = next_node(disk, grouped_nodes)
+    f = lambda t: disk[t[0]][t[1]] == '1' and t not in grouped_nodes
+    while node is not None:
+        grouped_nodes.append(node)
+        ngroups += 1
+        neighs = [n for n in filter(f, neighbours(node))]
+        while len(neighs) > 0:
+            neighbour = neighs.pop()
+            grouped_nodes.append(neighbour)
+            neighs.extend([n for n in filter(f, neighbours(neighbour))])
+        node = next_node(disk, grouped_nodes)
+        print(ngroups)
+    return ngroups
+            
