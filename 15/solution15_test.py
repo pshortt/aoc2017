@@ -1,5 +1,6 @@
 import unittest
 from solution15 import genseq, judge, count_judge
+from solution15_new import gen, count_matches
 
 class Solution15Test(unittest.TestCase):
     # def testExample01(self):
@@ -25,6 +26,15 @@ class Solution15Test(unittest.TestCase):
         
     def testJudge02(self):
         self.assertFalse(judge(1092455, 430625591))
+ 
+def genInt():
+    x = -1
+    while True:
+        x += 1
+        yield x
         
 if __name__ == '__main__':
-    unittest.main()
+    # unittest.main()
+    # print(count_matches(4*10**7))   
+    print(count_matches(5*10**6, 4, 8))
+    
