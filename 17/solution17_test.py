@@ -9,7 +9,7 @@ class Solution17Test(unittest.TestCase):
         self.assertEqual(short_circuit(324), 1306)
         
     def testPuzzle02(self):
-        self.assertEqual(after_zero(324), -1)
+        self.assertEqual(after_zero(324), 20430489)
         
 if __name__ == '__main__':
     unittest.main()
